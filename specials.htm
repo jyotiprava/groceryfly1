@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Groceryfly</title>
+<link href="style.css"rel="stylesheet" type="text/css" />
+<script src="jquery-1.6.4.min.js"></script>
+
+<script type="application/javascript">
+$(function(){
+
+  var flickerAPI = "http://192.168.2.105/groceryfly/phpfiles/specials.php?jsoncallback=?";
+  $.getJSON( flickerAPI, {
+  	
+    format: "json"
+  })
+  .done(function( data ) {
+      jQuery.each( data.items, function( i, it ) {
+	  var details;
+	  details=jQuery('#special').html();
+	  
+	  	
+		 if(it.image){
+			details=details.replace('**img**',it.image);
+		
+						}
+		if(it.name)
+				{
+				
+			details=details.replace('**name**',it.name);
+				}
+		if(it.price)
+				{
+				
+			details=details.replace('**price**',it.price);
+				}
+			
+		jQuery('#special_display').append(details);
+		
+		
+		
+		
+    });
+    });
+  
+});
+
+
+</script>
+
+<script>
+function getitem_details(id)
+{
+localStorage.item_val=id;
+
+window.location.href="category_details.htm";
+
+}
+</script>
+
+
+</head>
+
+<body>
+	<div id="header">
+	Groceryfly
+	</div>
+	
+	<div id="head" >
+<a href="specials.htm"><div style="width:20%; float:left; margin-top:3%;">
+							<input type="button" class="button" style="width:auto;   color:#FFFFFF; font-size:12px;" value="Specials" />
+						</div></a>
+							<div style="width:74%;float:left;  margin-left:5%;margin-top:3%;">
+								<h1 style=" color:#FFFFFF;"> 6th april 2013</h1>
+							</div>
+	</div>
+	
+	
+	
+				<div id="container">
+					
+					
+						<div id="container_content" style="background:#FFFFFF;">
+						
+						<div id="special_display">
+						
+						
+						</div>
+						
+						
+							<div id="special" style="display:none;">
+								<div class="shopbox">
+									<div class="shopbox_left">
+										**img**
+									</div>
+										<div class="shopbox_middle">
+											<h1 style=" margin-top:5%;">**name**<br />
+												<span style="font-weight:normal;"> Various Size.</span><br />
+												<span style="color:#C00000;">$**price**</span></h1><br />
+												<img src="images/shop.png" style="margin-left:3%;" />
+												
+										</div>
+										
+											<div class="shopbox_right">
+												<img src="images/Next-icon.png"  />
+											</div>
+								</div>
+								</div>
+								
+								
+								
+								
+								<div style="width:100%;height:100px; float:left;">
+								</div>
+								
+						</div>
+					
+					
+					<div style="width:100%;height:100px; float:left;">
+					</div>
+				</div>
+			
+		
+		
+<div id="footer">
+
+					<div class="button1" style="border-left:none;">
+									<div class="bottomtext">
+												<a href="help.htm"><img src="images/aboutus1.png" border="0" style="margin-top:2%;" /></a>
+												<a href="help.htm">Help</a>
+									</div>
+					</div>
+					<div class="button1">
+									<div class="bottomtext">
+												<a href="feedback.htm"><img src="images/feedback.png" border="0" style="margin-top:2%;" /></a>
+												<a href="feedback.htm">Feedback</a>
+									</div>
+					</div>
+					
+					<div class="button1">
+									<div class="bottomtext">
+												<a href="currentorder.htm"><img src="images/cart.png" border="0" style="margin-top:2%;" /></a>
+												<a href="currentorder.htm">Cart</a>
+									</div>
+					</div>
+					
+					<div class="button1" >
+									<div class="bottomtext">
+												<a href="profile.htm"><img src="images/aboutus.png" border="0"  style="margin-top:2%;"/></a>
+												<a href="about.htm">About us</a>
+									</div>
+					</div>	
+
+			</div>
+				
+	
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Groceryfly</title>
+<link href="style.css"rel="stylesheet" type="text/css" />
+
+<!-- styles needed by jScrollPane -->
+<link type="text/css" href="jquery.jscrollpane.css" rel="stylesheet" media="all" />
+
+<!-- latest jQuery direct from google's CDN -->
+<script type="text/javascript" src="jquery-1.6.4.min.js">
+</script>
+
+
+<!-- the mousewheel plugin - optional to provide mousewheel support -->
+<script type="text/javascript" src="jquery.mousewheel.js"></script>
+
+<!-- the jScrollPane script -->
+<script type="text/javascript" src="jquery.jscrollpane.min.js"></script>
+<script type="text/javascript">
+$(function()
+{
+	var pane = $('.scroll-pane');
+	pane.jScrollPane(
+		{
+			showArrows: true
+		}
+	);
+	var api = pane.data('jsp');
+
+	$('#but-scroll-to').bind(
+		'click',
+		function()
+		{
+			// Note, there is also scrollToX and scrollToY methods if you only
+			// want to scroll in one dimension
+			api.scrollTo(parseInt($('#toX').val()), parseInt($('#toY').val()));
+			return false;
+		}
+	);
+
+	$('#but-scroll-by').bind(
+		'click',
+		function()
+		{
+			// Note, there is also scrollByX and scrollByY methods if you only
+			// want to scroll in one dimension
+			api.scrollBy(parseInt($('#byX').val()), parseInt($('#byY').val()));
+			return false;
+		}
+	);
+});
+	
+</script>
+
+<script type="application/javascript">
+var val="";
+$(function(){
+$("#submit").click(function(){
+
+//alert("ggggg");
+
+$("#login").find(".textbox1").each(function(){
+
+val=val+'&'+$(this).attr('id')+'='+$(this).val();
+
+});
+  var yohoAPI = "http://192.168.2.105/groceryfly/phpfiles/login_insert.php?jsoncallback=?"+val;
+  $.getJSON( yohoAPI, {
+    tags: "mount rainier",
+    tagmode: "any",
+    format: "json"
+  })
+  .done(function( data ) {
+  
+     var statusval=data.items;
+	 if(statusval==1)
+	 {
+	 document.location.href="myaccount.htm";
+	 }
+	 else
+	 {
+	  document.location.href="index.html";
+	 }
+	 
+    
+  });
+
+});
+});
+
+</script>
+<script>
+
+var oid=new Date().getTime();
+localStorage.orderid=oid;
+</script>
+
+</head>
+
+<body>
+	<div id="header" style="position:fixed; top:0; z-index:99;">
+	Groceryfly
+	</div>
+	
+				<div id="container" style="position:relative;">
+					
+						<div id="container_content" style="height:650px;">
+							<h1 style="padding-left:5%; margin-top:2%; text-align:center; ">Login Here</h1>
+								
+									<table style="width:98%; height:220px; padding:1%;" align="center" id="login">
+										<tr>
+											<td colspan="3">Email Id</td>
+											
+											
+										</tr>
+										<tr>
+											<td colspan="3"><input type="text" name="email" id="email" class="textbox1"  /></td>
+										</tr>
+										<tr>
+											<td colspan="3">Password</td>
+											
+											
+										</tr>
+										<tr>
+											<td colspan="3"><input type="password" name="pass" id="pass" class="textbox1"  /></td>
+										</tr>
+										<tr>
+											<td><input type="button" name="submit" id="submit" value="" style="width:100px; height:32px; background:url(images/submit.png); border:none;" /></td>											
+											<td><a href="signup.htm"><span style="font-style:italic; color:#009900;">Create Account</span></a></td>
+											<td><span style="font-style:italic; color:#009900;">Forgot Password</span></td>
+										</tr>
+									</table>
+								
+								
+								
+						</div>
+				</div>
+			
+		
+		
+			<div id="footer">
+
+					<div class="button1" style="border-left:none;">
+									<div class="bottomtext">
+												<a href="help.htm"><img src="images/aboutus1.png" border="0" style="margin-top:2%;" /></a>
+												<a href="help.htm">Help</a>
+									</div>
+					</div>
+					<div class="button1">
+									<div class="bottomtext">
+												<a href="feedback.htm"><img src="images/feedback.png" border="0" style="margin-top:2%;" /></a>
+												<a href="feedback.htm">Feedback</a>
+									</div>
+					</div>
+					
+					<div class="button1">
+									<div class="bottomtext">
+												<a href="currentorder.htm"><img src="images/cart.png" border="0" style="margin-top:2%;" /></a>
+												<a href="currentorder.htm">Cart</a>
+									</div>
+					</div>
+					
+					<div class="button1" >
+									<div class="bottomtext">
+												<a href="profile.htm"><img src="images/aboutus.png" border="0"  style="margin-top:2%;"/></a>
+												<a href="about.htm">About us</a>
+									</div>
+					</div>	
+
+			</div>
+		
+		
+
+</body>
+</html>

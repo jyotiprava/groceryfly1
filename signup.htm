@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Groceryfly</title>
+<link href="style.css"rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="jquery-1.9.1.js">
+</script>
+</script>
+<script type="application/javascript">
+var val="";
+$(function(){
+   $('#register input:text').click(function(){
+	  $(this).css('color', 'black');
+	  $(this).val("");
+    });
+ $("#submit").click(function(){
+$("#register").find(".textbox1").each(function(){
+
+val=val+'&'+$(this).attr('id')+'='+$(this).val();
+
+});
+//alert(val);
+ validation();
+//var result = val.slice( 1 );
+
+ 
+
+
+});
+});
+
+</script>
+<script type="text/javascript">
+    function validation()
+    {
+      var e=0;
+      $('#register input:text,input:password').each(function(){
+	var value=$(this).val();
+	if (value==''||value=='please fill up this') {
+	  $(this).css('color','red');
+	  $(this).val("please fill up this");
+	  e=1;
+	 
+	}
+      });
+      var email=$("#email").val();
+	  //alert('--'+email+'--');
+	var mailformat =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if (!email.match(mailformat)) {
+			alert('Please provide a valid email address');
+			$("#email").focus();
+			e=1;
+			return false;
+			}
+			var pwd=$("#pass").val();	
+			var rpwd=$("#cpass").val();
+			if(pwd!=rpwd)
+			{
+				alert("password must be same.");
+				e=1;
+				return false;
+			}
+			if(e==1)
+			{
+			alert("some fields are blank");
+			return false;
+			}
+			if (e!=1) {
+			   var yohoAPI = "http://192.168.2.105/groceryfly/phpfiles/insert_newuser.php?jsoncallback=?"+val;
+			      $.getJSON( yohoAPI, {
+				tags: "mount rainier",
+				tagmode: "any",
+				format: "json"
+			      })
+			      .done(function( data ) {
+			       
+				 var statusval=data.items;
+				     if(statusval==1)
+				     {
+				   document.location.href="myaccount.htm";
+				     alert("Succesfully resistered.");
+				     }
+				     else
+				     {
+				      document.location.href="signup.htm";
+				      alert("Emailid allready exist.");
+				     }
+				     
+				$("#register").find(".textbox1").each(function(){
+			    
+				    $(this).val('');
+			    
+				});
+			      });		
+			  
+			}
+    }
+	 
+			
+		function isNumberKey(evt)
+		  {
+		     var charCode = (evt.which) ? evt.which : event.keyCode
+		     if (charCode > 31 && (charCode < 48 || charCode > 57))
+			     {
+				    alert("please enter number");
+			return false;
+				    }
+			    else
+		     return true;
+		  }
+</script>
+</head>
+<body>
+    <div id="header" style="position:fixed; top:0; z-index:99;">
+	Groceryfly
+    </div>
+	
+				<div id="container" style="position:relative;">
+					
+						<div id="container_content" style="height:1000px;">
+							<h1 style="padding-left:5%; margin-top:2%; text-align:center; ">Signup Here</h1>
+								
+									<table style="width:98%; height:auto; padding:1%;" align="center" id="register">
+										<tr>
+											<td>User Name</td>
+											
+											
+										</tr>
+										<tr>
+											<td><input type="text" id="name" name="name" class="textbox1"  /></td>
+										</tr>
+										<tr>
+											<td>Email Id</td>
+											
+											
+										</tr>
+										<tr>
+											<td><input type="text" id="email" name="email" class="textbox1"  /></td>
+										</tr>
+                                                                                <tr>
+											<td>Password</td>
+											
+											
+										</tr>
+										<tr>
+											<td><input type="password" id="pass" name="pass" class="textbox1"  /></td>
+										</tr>
+                                                                                <tr>
+											<td> Confirm Password</td>
+											
+											
+										</tr>
+										<tr>
+											<td><input type="password" id="cpass" name="cpass" class="textbox1"  /></td>
+										</tr>
+                                                                                <tr>
+											<td>City</td>
+											
+											
+										</tr>
+										<tr>
+											<td><input type="text" id="city" name="city" class="textbox1"  /></td>
+										</tr>
+                                                                                <tr>
+											<td>Address</td>
+											
+											
+										</tr>
+										<tr>
+											<td><input type="text" id="add" name="add" class="textbox1"  /></td>
+										</tr>
+                                                                                <tr>
+											<td>Pin</td>
+											
+											
+										</tr>
+										<tr>
+											<td><input type="text" id="pin" name="pin" class="textbox1" onkeypress="return isNumberKey(event)" /></td>
+										</tr>
+                                                                                <tr>
+											<td>Phone</td>
+											
+											
+										</tr>
+										<tr>
+											<td><input type="text" id="phn" name="phn" class="textbox1" onkeypress="return isNumberKey(event)" /></td>
+										</tr>
+										<tr>
+											<td><input type="button" id="submit" name="submit" value="" style="width:100px; height:32px; background:url(images/submit.png); border:none;" /></td>											
+										</tr>
+									</table>
+								
+								
+								
+						</div>
+				</div>
+			
+		
+</body>
+</html>

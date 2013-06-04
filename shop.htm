@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Groceryfly</title>
+<link href="style.css"rel="stylesheet" type="text/css" />
+<script src="jquery-1.6.4.min.js"></script>
+
+<script type="application/javascript">
+$(function(){
+  
+var catval=localStorage.category_val;
+
+//alert(restoidvalue);
+    
+  var flickerAPI = "http://192.168.2.105/groceryfly/phpfiles/find_item.php?jsoncallback=?&catid="+catval;
+  $.getJSON( flickerAPI, {
+    tags: "mount rainier",
+    tagmode: "any",
+    format: "json"
+  })
+  .done(function( data ) {
+   
+    //alert($('#resturant_det').html());
+ 
+  
+  $.each(data.items,function(i,it1){
+  //alert("sdfsdfsdf");
+	  var details=$('#item').html();
+	  
+	   if(it1.countval){
+			details=details.replace('**sspecl**',it1.countval);
+			//alert(it1.menuid);
+			}
+	  
+	  	 if(it1.image){
+			details=details.replace('**itemimg**',it1.image);
+			//alert(it1.menuid);
+			}
+		 if(it1.name){
+			details=details.replace('**itemname**',it1.name);
+		
+						}
+		if(it1.price)
+				{
+				
+			details=details.replace('**price**',it1.price);
+				}
+		
+			
+		$('#item_display').append(details);
+		
+		});
+    });
+	 });
+
+//$('.cat_id').click(function(){
+//  var id=this.attr('id');
+//  alert(id);
+//  
+//  });  
+</script>
+
+<script>
+function getitem_details(id)
+{
+localStorage.item_val=id;
+
+window.location.href="category_details.htm";
+
+}
+</script>
+<script>
+$(function(){
+$('#special').click(function(){
+
+$('#item_display').html('');
+var catval=localStorage.category_val;
+ var flickerAPI = "http://192.168.2.105/groceryfly/phpfiles/find_special.php?jsoncallback=?&catid="+catval;
+  $.getJSON( flickerAPI, {
+    tags: "mount rainier",
+    tagmode: "any",
+    format: "json"
+  })
+  .done(function( data ) {
+  
+  $.each(data.items,function(i,it){
+  //alert("sdfsdfsdf");
+	  var details=$('#item').html();
+	  
+	  
+	  
+	  	 if(it.image){
+			details=details.replace('**itemimg**',it.image);
+			//alert(it1.menuid);
+			}
+		 if(it.name){
+			details=details.replace('**itemname**',it.name);
+		
+						}
+		if(it.price)
+				{
+				
+			details=details.replace('**price**',it.price);
+				}
+		
+			
+		$('#item_display').append(details);
+		
+		});
+    });
+  
+  
+  
+  
+});
+});
+
+</script>
+
+</head>
+<body>
+	<div id="header">
+	Groceryfly
+	</div>
+	
+	<div id="head" >
+<div style="width:20%; float:left; margin-top:3%;">
+							<input type="button" class="button spcl" style="width:auto;   color:#FFFFFF; font-size:12px;" value="Specials" id="special" />
+						</div>
+							<div style="width:74%;float:left;  margin-left:5%;margin-top:3%;">
+								<h1 style=" color:#FFFFFF;"> 6th april 2013</h1>
+							</div>
+	</div>
+	
+	
+	
+				<div id="container">
+					
+					
+						<div id="container_content" style="background:#FFFFFF;">
+						
+						<div id="item_display">
+						
+						
+						</div>
+						
+						
+						<div id="item" style="display:none;">
+						<div class="shopbox  **sspecl**">
+									<div class="shopbox_left">
+										**itemimg**
+									</div>
+										<div class="shopbox_middle">
+											<h1 style=" margin-top:5%;">**itemname**<br />
+												<span style="font-weight:normal;"> Various Size.</span><br />
+												<span style="color:#C00000;">$**price**</span></h1><br />
+												<img src="images/shop.png" style="margin-left:3%;" />
+												
+										</div>
+										
+											<div class="shopbox_right">
+												<img src="images/Next-icon.png"  />
+											</div>
+								</div>
+								
+							</div>
+								
+								
+								
+								
+								<div style="width:100%;height:100px; float:left;">
+								</div>
+								
+						</div>
+					
+					
+					<div style="width:100%;height:100px; float:left;">
+					</div>
+				</div>
+			<div id="footer">
+
+					<div class="button1" style="border-left:none;">
+									<div class="bottomtext">
+												<a href="help.htm"><img src="images/aboutus1.png" border="0" style="margin-top:2%;" /></a>
+												<a href="help.htm">Help</a>
+									</div>
+					</div>
+					<div class="button1">
+									<div class="bottomtext">
+												<a href="feedback.htm"><img src="images/feedback.png" border="0" style="margin-top:2%;" /></a>
+												<a href="feedback.htm">Feedback</a>
+									</div>
+					</div>
+					
+					<div class="button1">
+									<div class="bottomtext">
+												<a href="currentorder.htm"><img src="images/cart.png" border="0" style="margin-top:2%;" /></a>
+												<a href="currentorder.htm">Cart</a>
+									</div>
+					</div>
+					
+					<div class="button1" >
+									<div class="bottomtext">
+												<a href="profile.htm"><img src="images/aboutus.png" border="0"  style="margin-top:2%;"/></a>
+												<a href="about.htm">About us</a>
+									</div>
+					</div>	
+
+			</div>
+	
+</body>
+</html>
