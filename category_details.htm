@@ -26,7 +26,7 @@ var itemvalue=localStorage.item_val;
 
 //alert(restoidvalue);
     
-  var flickerAPI = "http://192.168.2.105/groceryfly/phpfiles/find_details.php?jsoncallback=?&itemid="+itemvalue;
+  var flickerAPI = "http://50.56.237.229/groceryfly/phpfiles/find_details.php?jsoncallback=?&itemid="+itemvalue;
   $.getJSON( flickerAPI, {
     tags: "mount rainier",
     tagmode: "any",
@@ -64,7 +64,7 @@ var odrid=localStorage.orderid;
 var qn=$('#qnt').val();
 
 //alert("http://192.168.2.105/groceryfly/phpfiles/insert_order.php?jsoncallback=?&orderid="+odrid+"&item="+itemidval+"&qnty="+qn);
-		var yohoAPI = "http://192.168.2.105/groceryfly/phpfiles/insert_order.php?jsoncallback=?&orderid="+odrid+"&item="+itemidval+"&qnty="+qn;
+		var yohoAPI = "http://50.56.237.229/groceryfly/phpfiles/insert_order.php?jsoncallback=?&orderid="+odrid+"&item="+itemidval+"&qnty="+qn;
   $.getJSON( yohoAPI, {
     tags: "mount rainier",
     tagmode: "any",

@@ -27,7 +27,7 @@ $(function(){
 
    var orderidval=localStorage.orderid;
  //alert(orderidval);
-  var flickerAPI = "http://192.168.2.105/groceryfly/phpfiles/currentorder.php?jsoncallback=?&oid="+orderidval;
+  var flickerAPI = "http://50.56.237.229/groceryfly/phpfiles/currentorder.php?jsoncallback=?&oid="+orderidval;
   $.getJSON( flickerAPI, {
   	
     format: "json"

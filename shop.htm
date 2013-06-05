@@ -16,7 +16,7 @@ var catval=localStorage.category_val;
 
 //alert(restoidvalue);
     
-  var flickerAPI = "http://192.168.2.105/groceryfly/phpfiles/find_item.php?jsoncallback=?&catid="+catval;
+  var flickerAPI = "http://50.56.237.229/groceryfly/phpfiles/find_item.php?jsoncallback=?&catid="+catval;
   $.getJSON( flickerAPI, {
     tags: "mount rainier",
     tagmode: "any",
@@ -79,7 +79,7 @@ $('#special').click(function(){
 
 $('#item_display').html('');
 var catval=localStorage.category_val;
- var flickerAPI = "http://192.168.2.105/groceryfly/phpfiles/find_special.php?jsoncallback=?&catid="+catval;
+ var flickerAPI = "http://50.56.237.229/groceryfly/phpfiles/find_special.php?jsoncallback=?&catid="+catval;
   $.getJSON( flickerAPI, {
     tags: "mount rainier",
     tagmode: "any",

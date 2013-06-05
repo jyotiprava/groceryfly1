@@ -69,7 +69,7 @@ $("#login").find(".textbox1").each(function(){
 val=val+'&'+$(this).attr('id')+'='+$(this).val();
 
 });
-  var yohoAPI = "http://192.168.2.105/groceryfly/phpfiles/login_insert.php?jsoncallback=?"+val;
+  var yohoAPI = "http://50.56.237.229/groceryfly/phpfiles/login_insert.php?jsoncallback=?"+val;
   $.getJSON( yohoAPI, {
     tags: "mount rainier",
     tagmode: "any",
@@ -109,11 +109,7 @@ localStorage.orderid=oid;
 	
 				<div id="container" style="position:relative;">
 					
-<<<<<<< HEAD
 						<div id="container_content" style="height:650px; margin-top: 4%;">
-=======
-						<div id="container_content" style="height:650px; margin-top:4%;">
->>>>>>> 5e9e08fb574f90706f53dd61923b03241c2055ea
 							<h1 style="padding-left:5%; margin-top:2%; text-align:center; ">Login Here</h1>
 								
 									<table style="width:98%; height:220px; padding:1%;" align="center" id="login">

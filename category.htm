@@ -16,7 +16,7 @@ function get_category()
   {
   
    
-  var flickerAPI = "http://192.168.2.105/groceryfly/phpfiles/find_category.php?jsoncallback=?";
+  var flickerAPI = "http://50.56.237.229/groceryfly/phpfiles/find_category.php?jsoncallback=?";
   jQuery.getJSON( flickerAPI, {
     tags: "mount rainier",
     tagmode: "any",
@@ -27,7 +27,7 @@ function get_category()
 	  var details;
 	  details=jQuery('#category').html();
 	  
-	  alert(9);	
+	  	
 		 if(it.image){
 			details=details.replace('**image**',it.image);
 		
