@@ -34,6 +34,7 @@ var itemvalue=localStorage.item_val;
   })
   .done(function( data ) {
     $.each( data.items, function( i, it ) {
+      $('#loading').hide();	 
     	$('#itemname').append(it.name);
 		$('#image').append(it.image);
 		$('#price').append(it.price);
@@ -141,6 +142,9 @@ var uid=localStorage.name;
 							<div id="detailsbar">
 						
 						<div id="detailsbar_left" >
+						  <div style="width:100%; height:auto; float:left; text-align: center;" id="loading">
+						      <img src="images/loading.gif" style="width:60px; height:60px;  margin-top: 10%;"/>
+						  </div>
 									<h1 style="font-weight:bold;"><span id="itemname"></span></h1>
 									<div id="image"></div>
 										<table style="width:100%; font-weight:normal; font-size:22px; text-align:center; ">
