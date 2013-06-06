@@ -6,28 +6,19 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <title>Groceryfly</title>
-<link href="style.css"rel="stylesheet" type="text/css" />
-<style>
-tr{
-width:100%;
-height:35px;
-}
-td{
-width:25%;
-height:35px;
-text-transform:capitalize;
-}
-</style>
+<link href="style.css" rel="stylesheet" type="text/css" />
 
-<script src="jquery-1.6.4.min.js"></script>
+<script src="jquery-1.9.1.min.js"></script>
 
 <script type="application/javascript">
 $(function(){
   
-
+//alert(readCookie('uid'));
    var orderidval=localStorage.orderid;
- //alert(orderidval);
-  var flickerAPI = "http://50.56.237.229/groceryfly/phpfiles/currentorder.php?jsoncallback=?&oid="+orderidval;
+   var discountval=localStorage.discount;
+   //alert(discountval);
+  // alert(orderidval);
+  var flickerAPI = "http://50.56.237.229/groceryfly/phpfiles/bill.php?jsoncallback=?&oid="+orderidval;
   $.getJSON( flickerAPI, {
   	
     format: "json"
@@ -36,16 +27,31 @@ $(function(){
   
   //alert('dfg');
     $.each( data.items, function( i, itemk ) {
- 
+  //alert(itemk.description);
 	 //alert(i);
-	$('#cart_content').append(itemk.description);
+	$('#item').append(itemk.description);
     });
   });
-  
+
 });
-
-
 </script>
+<script>
+function confirm1()
+{
+var r;
+r=confirm("Are You sure you would like to submit this sale for credit card payment");
+if(r==true)
+{
+window.location.href='checkout_method.htm';
+}
+else
+{
+return false;
+}
+
+}
+</script>
+
 </head>
 
 <body>
@@ -54,51 +60,47 @@ $(function(){
 	<a href="logout.htm"><img src="images/logout.png" style="float:right; margin-right: 2%;"/></a>
 	</div>
 	
-				<div id="head" >
-						<a href="myaccount.htm"><div style="width:20%; float:left; margin-top:3%;">
-							<input type="button" class="button" style="width:auto;   color:#FFFFFF; font-size:12px;" value="Specials" />
-						</div></a>
-							<div style="width:60%;float:left;text-align: center;margin-top:3%;">
-								<h1 style=" color:#FFFFFF;"> 6th april 2013</h1>
-							</div>
-						<div style="width:20%; float:left; margin-top:3%;">
-							<a href="myaccount.htm"><input type="button" class="button" style="width:auto;   color:#FFFFFF; font-size:12px;" value="Home" /></a>
-						</div>
-				 </div>
 	
-				<div id="container">
-						<div id="container_content" style="font-weight:normal;">
-							<div id="billingtablebar">
-								<div style="width:100%; height:auto; float:left;">
-									<div class="buttongreen">Products
-									</div>
-									<div class="buttongreen">Quantity
-									</div>
-									<div class="buttongreen">Price
-									</div>
-									<div class="buttongreen">Total
-									</div>
-								</div>	
-										<table style="width:100%; height:auto; text-align:center;">
-											<tr>
-												<td colspan="4">
-												</td>
-											</tr>
-											<tbody id="cart_content">
+	<div id="head" >
+						
+						
+	</div>
+	
+	
+						<div id="container">
+					
+							<div id="container_content">
 							
-							
-											</tbody>
-										</table>
-									<div style="width:100%; height:auto; float:left; margin-top:3%;">
-										<img src="images/cshop.png" style="width:40%; height:auto;" />
-										<img src="images/checkout.png" style="width:35%; height:auto;" />
-										<img src="images/cancel.png" style="width:20%; height:auto" />
-									</div>
-							</div>
-						</div
-				></div>
+							<div>
+									
+				
+					<input type="button" name="button" id="btn" onclick="return confirm1();" value="Check Out"  style="width:120px; height:33px; border:none; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#000;"/>
+				
+
+
+<table style="margin-top:7%; text-align:center; ">
+	<tr>
+		<th>Item Name</th>
 		
-	  <div id="footer">
+		<th>Item Quantity</th>
+		
+		<th>Item Price</th>
+		
+		<th>Total  Price</th>
+		
+	</tr>
+	<tbody id="item" style="font-size:14px; font-family:Arial, Helvetica, sans-serif;">
+	</tbody>
+	
+</table>
+</div>
+							
+							
+							
+							</div>
+				</div>
+			
+				  <div id="footer">
 
 					<div class="button1" style="border-left:none;">
 									<div class="bottomtext">
@@ -129,6 +131,7 @@ $(function(){
 					
 			</div>
 			
+		
 
 </body>
 </html>

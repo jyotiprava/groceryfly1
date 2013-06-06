@@ -62,9 +62,10 @@ var odrid=localStorage.orderid;
 		
 		$('.addtocart').click(function(){
 var qn=$('#qnt').val();
+var uid=localStorage.name;
 
 //alert("http://192.168.2.105/groceryfly/phpfiles/insert_order.php?jsoncallback=?&orderid="+odrid+"&item="+itemidval+"&qnty="+qn);
-		var yohoAPI = "http://50.56.237.229/groceryfly/phpfiles/insert_order.php?jsoncallback=?&orderid="+odrid+"&item="+itemidval+"&qnty="+qn;
+		var yohoAPI = "http://50.56.237.229/groceryfly/phpfiles/insert_order.php?jsoncallback=?&orderid="+odrid+"&item="+itemidval+"&qnty="+qn+"&userid="+uid;
   $.getJSON( yohoAPI, {
     tags: "mount rainier",
     tagmode: "any",
@@ -122,9 +123,12 @@ var qn=$('#qnt').val();
 						<div style="width:20%; float:left; margin-top:3%;">
 							<a href="shop.htm"><input type="button" class="button" style="width:auto;color:#FFFFFF; font-size:12px;" value="Back" /></a>
 						</div>
-							<div style="width:74%;float:left;  margin-left:5%;margin-top:3%;">
+							<div style="width:60%;float:left;text-align: center;margin-top:3%;">
 								<h1 style=" color:#FFFFFF; font-weight:bold;"> Item Details</h1>
 							</div>
+						<div style="width:20%; float:left; margin-top:3%;">
+							<a href="myaccount.htm"><input type="button" class="button" style="width:auto;   color:#FFFFFF; font-size:12px;" value="Home" /></a>
+						</div>
 				</div>
 	
 	
@@ -154,13 +158,17 @@ var qn=$('#qnt').val();
 									<div id="sdesc">
 									  
 									</div>
-									<div style="width:100%; height:70px; float:left; margin-top: 80%;">
-									  <table style="width:100%; font-weight:normal;">
+									<div style="width:100%; height:100px; float:left; margin-top: 80%;">
+									  <table style="width:100%; font-weight:normal; text-align: center;">
 									    <tr>
 									      <td>
 										Quantity
 									      </td>
+									    </tr>
+									    <tr>
 									      <td><input type="text" class="textbox1" style="width:60%;" value="1" id="qnt" /> </td>
+									    </tr>
+									    <tr>
 									      <td><img src="images/add.png" style="width:35px; height: auto;" id="add"/></td>
 									      <td><img src="images/subtract.png" id="sub" /></td>
 									    </tr>
@@ -169,7 +177,7 @@ var qn=$('#qnt').val();
 								</div>
 								
 								
-									<div id="nutrition">
+									<div id="nutrition" style="font-weight: normal;">
 										
 									</div>
 							</div>		

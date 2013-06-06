@@ -7,42 +7,71 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <title>Groceryfly</title>
 <link href="style.css"rel="stylesheet" type="text/css" />
+
+<script src="jquery-1.9.1.min.js"></script>
+
+<script type="application/javascript">
+function assign(){
+  
+//alert(readCookie('uid'));
+   var total=localStorage.total;
+//alert(total);
+   document.getElementById('tot_val').innerHTML=total;
+
+};
+
+
+</script>
+
 </head>
-<body>
-<div id="header">
+
+<body onload="return assign();">
+	<div id="header">
 	Groceryfly
 	<a href="logout.htm"><img src="images/logout.png" style="float:right; margin-right: 2%;"/></a>
-</div>
+	</div>
+	
+	
 	<div id="head" >
-<a href="specials.htm"><div style="width:20%; float:left; margin-top:3%;">
-							<input type="button" class="button" style="width:auto;   color:#FFFFFF; font-size:12px;" value="Specials" />
-						</div></a>
-							<div style="width:60%;float:left;text-align: center;margin-top:3%;">
-								<h1 style=" color:#FFFFFF;"> 6th april 2013</h1>
-							</div>
-						<div style="width:20%; float:left; margin-top:3%;">
-							<a href="myaccount.htm"><input type="button" class="button" style="width:auto;   color:#FFFFFF; font-size:12px;" value="Home" /></a>
+						
+	</div>
+	
+	
+						<div id="container">
+					
+							<div id="container_content">
+							
+							<div style="width:49%; height:40px; float:left; padding-left:1%;  margin-top:3%; font-size:14px; font-weight:bold;">Amount</div>
+<div id="tot_val"  style="width:49%; height:40px; float:left; padding-left:1%; text-align:right; font-weight:bold; margin-top:3%; font-size:14px;"></div>
+ 
+ <div style="width:99%; height:auto; float:left; margin-left:1%;">
+    <a href="cash.htm"><div style="width:100%; height:40px; float:left; padding-bottom:1%; padding-top:1%; border-bottom:1px solid #666666; border-top:1px solid #666666; ">
+							<img src="images/cash-icon.png" style="float:left; margin-left:5%; margin-top:3px;" />
+						<span style=" font-family:Arial, Helvetica, sans-serif; font-size:14px; float:left;color:#000000; margin-left:10%; margin-bottom:5px; padding-top:3%;">Cash</span>
 						</div>
-	</div>		
-				<div id="container">
-					<div id="container_content" style="font-weight:normal;">
-						<div style="width:90%; height:auto; float:left; margin-left:5%; margin-top:3%; border:1px solid #cccccc;">
-							<div style="width:96%; height:auto; padding-left:2%;">
-								<p>
-									<h2>Groceryfly For Android</h2>
-									Version 4.0<br />
-									<h2> About Groceryfly:</h2>
-									A restaurant is an establishment which prepares and serves food and drink to customers in return for money, either paid before the meal, after the meal, or with a running tab.<br />
-									<h2> Delivering Commitment</h2>
-									Your order is safe with us! we provide 100% refund guarante for every online paid order.<br />
-									<h2 style="font-size:20px;">NEXT TIME YOU WANT TO BUY GROCERY-Simply let this app help you!</h2>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
+	</a>
+ 
+ 
+ 
+ 	
+ 
 
-	  <div id="footer">
+	<a href="mastero.htm"> <div style="width:100%; height:40px; float:left; padding-top:1%; padding-bottom:1%; border-bottom:1px solid #666666; ">
+		 <img src="images/maestro.png" style="float:left; margin-left:5%; margin-top:1px;" /> 
+   			<span style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#000000; float:left; margin-left:5%; padding-top:3%;">Maestro
+									</span>
+									
+							</div>
+	</a>
+  </div>
+							
+							
+							
+							
+							</div>
+				</div>
+			
+				  <div id="footer">
 
 					<div class="button1" style="border-left:none;">
 									<div class="bottomtext">
@@ -51,7 +80,7 @@
 									</div>
 					</div>
 					<div class="button1">
-									<div class="bottomtext">
+									<div class="bottomtext" >
 												<a href="feedback.htm"><img src="images/feedback.png" border="0" style="margin-top:8%;" /></a></br>
 												<a href="feedback.htm">Feedback</a>
 									</div>
@@ -74,5 +103,6 @@
 			</div>
 			
 		
+
 </body>
 </html>

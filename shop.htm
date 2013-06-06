@@ -49,7 +49,11 @@ var catval=localStorage.category_val;
 				
 			details=details.replace('**price**',it1.price);
 				}
-		
+		if(it1.id)
+				{
+				
+			details=details.replace('**click**',it1.id);
+				}
 			
 		$('#item_display').append(details);
 		
@@ -106,7 +110,11 @@ var catval=localStorage.category_val;
 				
 			details=details.replace('**price**',it.price);
 				}
-		
+		if(it.id)
+				{
+				
+			details=details.replace('**click**',it.id);
+				}
 			
 		$('#item_display').append(details);
 		
@@ -132,9 +140,12 @@ var catval=localStorage.category_val;
 <div style="width:20%; float:left; margin-top:3%;">
 							<input type="button" class="button spcl" style="width:auto;   color:#FFFFFF; font-size:12px;" value="Specials" id="special" />
 						</div>
-							<div style="width:74%;float:left;  margin-left:5%;margin-top:3%;">
+							<div style="width:60%;float:left;text-align: center;margin-top:3%;">
 								<h1 style=" color:#FFFFFF;"> 6th april 2013</h1>
 							</div>
+						<div style="width:20%; float:left; margin-top:3%;">
+							<a href="myaccount.htm"><input type="button" class="button" style="width:auto;   color:#FFFFFF; font-size:12px;" value="Home" /></a>
+						</div>
 	</div>
 	
 	
@@ -151,7 +162,7 @@ var catval=localStorage.category_val;
 						
 						
 						<div id="item" style="display:none;">
-						<div class="shopbox  **sspecl**">
+						<div class="shopbox"  **sspecl** onclick="return getitem_details('**click**')">
 									<div class="shopbox_left">
 										**itemimg**
 									</div>

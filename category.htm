@@ -37,9 +37,12 @@ function get_category()
 				
 			details=details.replace('**category name**',it.name);
 				}
-		
+		if (it.id) {
+		  details=details.replace('**click**',it.id);
+		}
 			
 		jQuery('#cat_display').append(details);
+		
 		
 		
 		
@@ -79,9 +82,12 @@ window.location.href="shop.htm";
 	
 				<div id="head" >
 						
-							<div style="width:90%;float:left;  margin-left:5%;margin-top:3%;">
+							<div style="width:80%;float:left;text-align: center; margin-top:3%;">
 								<h1 style=" color:#FFFFFF; font-weight:bold; text-align:center;">Grocery Categories</h1>
 							</div>
+						<div style="width:20%; float:left; margin-top:3%;">
+							<a href="myaccount.htm"><input type="button" class="button" style="width:auto;   color:#FFFFFF; font-size:12px;" value="Home" /></a>
+						</div>
 				</div>	
 	
 				<div id="container">
@@ -95,7 +101,7 @@ window.location.href="shop.htm";
 						
 						
 						<div id="category" style="display:none;">
-								<div class="box">
+								<div class="box" onclick="return getitem('**click**')">
 									<div style="width:10%;height:auto;float:left;">
 										**image**								
 									</div>
